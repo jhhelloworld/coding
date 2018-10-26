@@ -28,7 +28,8 @@ public class Problem_18_InsertNumToCircularList {
 		}
 		pre.next = node;
 		node.next = cur;
-		return head.value < num ? head : node;
+		head =  head.value < num ? head : node;
+		return head;
 	}
 
 	public static void printCircularList(Node head) {
