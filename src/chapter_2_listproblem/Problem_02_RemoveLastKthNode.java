@@ -1,5 +1,8 @@
 package chapter_2_listproblem;
 
+/**
+ * 单链表和双链表中删除倒数第K个节点
+ */
 public class Problem_02_RemoveLastKthNode {
 
 	public static class Node {

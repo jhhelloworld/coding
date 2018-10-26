@@ -1,5 +1,8 @@
 package chapter_2_listproblem;
 
+/**
+ * 打印两个链表的公共部分
+ */
 public class Problem_01_PrintCommonPart {
 
 	public static class Node {
