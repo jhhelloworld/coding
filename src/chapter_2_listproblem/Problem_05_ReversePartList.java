@@ -1,5 +1,8 @@
 package chapter_2_listproblem;
 
+/**
+ * 翻转部分单向链表  给定 head    整数 from to  把第from到第to 个节点这一部分翻转
+ */
 public class Problem_05_ReversePartList {
 
 	public static class Node {
@@ -25,6 +28,7 @@ public class Problem_05_ReversePartList {
 		if (from > to || from < 1 || to > len) {
 			return head;
 		}
+		//very important
 		node1 = fPre == null ? head : fPre.next;
 		Node node2 = node1.next;
 		node1.next = tPos;
