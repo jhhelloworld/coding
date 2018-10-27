@@ -15,6 +15,8 @@ public class Problem_03_RemoveNodeByRatio {
 		if (head == null || head.next == null) {
 			return head;
 		}
+
+		//如果把这个if省略 while 条件应该加上 cur!=null
 		if (head.next.next == null) {
 			return head.next;
 		}
@@ -38,7 +40,9 @@ public class Problem_03_RemoveNodeByRatio {
 			n++;
 			cur = cur.next;
 		}
+		//(double)很重要
 		n = (int) Math.ceil(((double) (a * n)) / (double) b);
+		//!
 		if (n == 1) {
 			head = head.next;
 		}
