@@ -12,6 +12,10 @@ public class Problem_02_PrintEdgeNodes {
 		}
 	}
 
+	/**
+	 * 标准一：头结点、叶节点、某一层的最左最右
+	 * @param head
+	 */
 	public static void printEdge1(Node head) {
 		if (head == null) {
 			return;
@@ -62,6 +66,10 @@ public class Problem_02_PrintEdgeNodes {
 		printLeafNotInMap(h.right, l + 1, m);
 	}
 
+	/**
+	 *标准二：头结点、叶节点、左/右边界延伸的路径
+	 * @param head
+	 */
 	public static void printEdge2(Node head) {
 		if (head == null) {
 			return;

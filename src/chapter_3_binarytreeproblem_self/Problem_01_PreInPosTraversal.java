@@ -1,9 +1,5 @@
 package chapter_3_binarytreeproblem_self;
 
-import chapter_8_arrayandmatrix.Problem_20_PrintMaxTopK;
-import com.sun.org.apache.xpath.internal.SourceTree;
-
-import java.text.NumberFormat;
 import java.util.Stack;
 
 /**
