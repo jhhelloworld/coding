@@ -1,5 +1,6 @@
 package chapter_2_listproblem_self;
 
+import java.util.Currency;
 import java.util.Stack;
 
 /**
@@ -17,151 +18,61 @@ public class Problem_07_IsPalindromeList {
 		}
 	}
 
-	// need n extra space
-	public static boolean isPalindrome1(Node head) {
-        Stack<Node> stack = new Stack<Node>();
-        Node cur = head;
-        while (cur!=null){
-            stack.push(cur);
-            cur = cur.next;
-        }
-        while (head!=null){
-            if (stack.pop().value!=head.value){
-                return false;
-            }
-            head = head.next;
-        }
-        return true;
-    }
-
-    public static boolean isPalindrome2(Node head) {
-        if(head==null ||head.next==null){
-            return true;
-        }
-        Node slow = head;
-        Node fast = head;
-        while (fast.next!=null && fast.next.next!=null){
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-        Node cur = slow.next;
-        Stack<Node> stack = new Stack<>();
-        while (cur!=null){
-            stack.push(cur);
-            cur = cur.next;
-        }
-        while (!stack.empty()){
-            if(stack.pop().value!=head.value){
-                return false;
-            }
-            head = head.next;
-        }
-        return true;
-    }
 
 
 
-    //todo
+
+
+
+    // need O(1) extra space
     public static boolean isPalindrome3(Node head) {
-        if(head == null || head.next == null) {
+        if(head == null || head.next == null){
             return true;
         }
-        //获取中间节点
+        boolean result = true;
+
         Node fast = head;
-        Node slow = head;
-        while (fast.next != null && fast.next.next != null){
-            slow = slow.next;
+        Node middle = head;
+        while (fast.next!=null && fast.next.next!=null){
             fast = fast.next.next;
+            middle = middle.next;
         }
-        Node right2 = fast;
-        Node left2 = slow.next;
-        Node right1 = slow;
-        //翻转链表
+        Node rightBegin = middle.next;
+        middle.next = null;
         Node pre = null;
         Node next = null;
-        Node cur = left2;
-        while (cur!=null){
+        Node cur = rightBegin;
+        while (cur !=null){
             next = cur.next;
             cur.next = pre;
             pre = cur;
             cur = next;
         }
-        printLinkedList(head);
-        boolean res = true;
         Node cur1 = head;
-        cur = pre;
-        while (cur1!=null && cur!=null ){
-            if(cur1.value != cur.value){
-                res = false;
+        Node cur2 = pre;
+        while (cur2 !=null){
+            if(cur1.value != cur2.value){
+                result = false;
                 break;
             }
             cur1 = cur1.next;
-            cur = cur.next;
+            cur2 = cur2.next;
         }
-
-
-        //恢复
+        //recover
+        cur = pre;
         pre = null;
         next = null;
-        cur = right2;
-        while (cur!=null){
+        while (cur != null){
             next = cur.next;
             cur.next = pre;
             pre = cur;
             cur = next;
         }
-        right1.next = pre;
-        printLinkedList(head);
+        middle.next = pre;
 
-
-
-        return res;
+        return  result;
 
     }
-
-    // need O(1) extra space
-    public static boolean isPalindrome4(Node head) {
-        if (head == null || head.next == null) {
-            return true;
-        }
-        Node n1 = head;
-        Node n2 = head;
-        while (n2.next != null && n2.next.next != null) { // find mid node
-            n1 = n1.next; // n1 -> mid
-            n2 = n2.next.next; // n2 -> end
-        }
-        n2 = n1.next; // n2 -> right part first node
-        n1.next = null; // mid.next -> null
-        Node n3 = null;
-        while (n2 != null) { // right part convert
-            n3 = n2.next; // n3 -> save next node
-            n2.next = n1; // next of right node convert
-            n1 = n2; // n1 move
-            n2 = n3; // n2 move
-        }
-        n3 = n1; // n3 -> save last node
-        n2 = head;// n2 -> left first node
-        boolean res = true;
-        while (n1 != null && n2 != null) { // check palindrome
-            if (n1.value != n2.value) {
-                res = false;
-                break;
-            }
-            n1 = n1.next; // left to mid
-            n2 = n2.next; // right to mid
-        }
-        n1 = n3.next;
-        n3.next = null;
-        while (n1 != null) { // recover list
-            n2 = n1.next;
-            n1.next = n3;
-            n3 = n1;
-            n1 = n2;
-        }
-        return res;
-    }
-
-
 
     public static void printLinkedList(Node node) {
         System.out.print("Linked List: ");
@@ -176,16 +87,16 @@ public class Problem_07_IsPalindromeList {
 
         Node head = null;
         printLinkedList(head);
-        System.out.print(isPalindrome3(head) + " | ");
-        System.out.print(isPalindrome3(head) + " | ");
+        //System.out.print(isPalindrome1(head) + " | ");
+        //System.out.print(isPalindrome2(head) + " | ");
         System.out.println(isPalindrome3(head) + " | ");
         printLinkedList(head);
         System.out.println("=========================");
 
         head = new Node(1);
         printLinkedList(head);
-        System.out.print(isPalindrome3(head) + " | ");
-        System.out.print(isPalindrome3(head) + " | ");
+        //System.out.print(isPalindrome1(head) + " | ");
+        //System.out.print(isPalindrome2(head) + " | ");
         System.out.println(isPalindrome3(head) + " | ");
         printLinkedList(head);
         System.out.println("=========================");
@@ -193,8 +104,8 @@ public class Problem_07_IsPalindromeList {
         head = new Node(1);
         head.next = new Node(2);
         printLinkedList(head);
-        System.out.print(isPalindrome3(head) + " | ");
-        System.out.print(isPalindrome3(head) + " | ");
+        //System.out.print(isPalindrome1(head) + " | ");
+        //System.out.print(isPalindrome2(head) + " | ");
         System.out.println(isPalindrome3(head) + " | ");
         printLinkedList(head);
         System.out.println("=========================");
@@ -202,8 +113,8 @@ public class Problem_07_IsPalindromeList {
         head = new Node(1);
         head.next = new Node(1);
         printLinkedList(head);
-        System.out.print(isPalindrome3(head) + " | ");
-        System.out.print(isPalindrome3(head) + " | ");
+        //System.out.print(isPalindrome1(head) + " | ");
+        //System.out.print(isPalindrome2(head) + " | ");
         System.out.println(isPalindrome3(head) + " | ");
         printLinkedList(head);
         System.out.println("=========================");
@@ -212,8 +123,8 @@ public class Problem_07_IsPalindromeList {
         head.next = new Node(2);
         head.next.next = new Node(3);
         printLinkedList(head);
-        System.out.print(isPalindrome3(head) + " | ");
-        System.out.print(isPalindrome3(head) + " | ");
+       // System.out.print(isPalindrome1(head) + " | ");
+        //System.out.print(isPalindrome2(head) + " | ");
         System.out.println(isPalindrome3(head) + " | ");
         printLinkedList(head);
         System.out.println("=========================");
@@ -222,8 +133,8 @@ public class Problem_07_IsPalindromeList {
         head.next = new Node(2);
         head.next.next = new Node(1);
         printLinkedList(head);
-        System.out.print(isPalindrome3(head) + " | ");
-        System.out.print(isPalindrome3(head) + " | ");
+        //System.out.print(isPalindrome1(head) + " | ");
+       // System.out.print(isPalindrome2(head) + " | ");
         System.out.println(isPalindrome3(head) + " | ");
         printLinkedList(head);
         System.out.println("=========================");
@@ -233,8 +144,8 @@ public class Problem_07_IsPalindromeList {
         head.next.next = new Node(3);
         head.next.next.next = new Node(1);
         printLinkedList(head);
-        System.out.print(isPalindrome3(head) + " | ");
-        System.out.print(isPalindrome3(head) + " | ");
+        //System.out.print(isPalindrome1(head) + " | ");
+        //System.out.print(isPalindrome2(head) + " | ");
         System.out.println(isPalindrome3(head) + " | ");
         printLinkedList(head);
         System.out.println("=========================");
@@ -244,8 +155,8 @@ public class Problem_07_IsPalindromeList {
         head.next.next = new Node(2);
         head.next.next.next = new Node(1);
         printLinkedList(head);
-        System.out.print(isPalindrome3(head) + " | ");
-        System.out.print(isPalindrome3(head) + " | ");
+        //System.out.print(isPalindrome1(head) + " | ");
+       // System.out.print(isPalindrome2(head) + " | ");
         System.out.println(isPalindrome3(head) + " | ");
         printLinkedList(head);
         System.out.println("=========================");
@@ -256,12 +167,13 @@ public class Problem_07_IsPalindromeList {
         head.next.next.next = new Node(2);
         head.next.next.next.next = new Node(1);
         printLinkedList(head);
-        System.out.print(isPalindrome3(head) + " | ");
-        System.out.print(isPalindrome3(head) + " | ");
+        //System.out.print(isPalindrome1(head) + " | ");
+        //System.out.print(isPalindrome2(head) + " | ");
         System.out.println(isPalindrome3(head) + " | ");
         printLinkedList(head);
         System.out.println("=========================");
 
     }
+
 
 }

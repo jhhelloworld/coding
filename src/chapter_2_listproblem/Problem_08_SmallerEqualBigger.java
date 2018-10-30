@@ -1,5 +1,8 @@
 package chapter_2_listproblem;
 
+/**
+ * 将单链表划分为左边小，中间相等，右边大的形式
+ */
 public class Problem_08_SmallerEqualBigger {
 
 	public static class Node {
