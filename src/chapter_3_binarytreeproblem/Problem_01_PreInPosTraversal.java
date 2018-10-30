@@ -2,6 +2,9 @@ package chapter_3_binarytreeproblem;
 
 import java.util.Stack;
 
+/**
+ * 遍历二叉树
+ */
 public class Problem_01_PreInPosTraversal {
 
 	public static class Node {
