@@ -3,6 +3,9 @@ package chapter_3_binarytreeproblem;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * 二叉树的序列化和反序列化
+ */
 public class Problem_04_SerializeAndReconstructTree {
 
 	public static class Node {
