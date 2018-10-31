@@ -39,6 +39,7 @@ public class Problem_02_PrintEdgeNodes {
 	}
 
 	public static int getHeight(Node h, int l) {
+		//return L !! 不是1
 		if (h == null) {
 			return l;
 		}
