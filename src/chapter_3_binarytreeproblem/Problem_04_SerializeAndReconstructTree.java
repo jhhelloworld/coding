@@ -78,6 +78,7 @@ public class Problem_04_SerializeAndReconstructTree {
 		int index = 0;
 		Node head = generateNodeByString(values[index++]);
 		Queue<Node> queue = new LinkedList<Node>();
+		//!!
 		if (head != null) {
 			queue.offer(head);
 		}

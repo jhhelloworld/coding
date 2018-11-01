@@ -1,7 +1,4 @@
 package chapter_3_binarytreeproblem_self;
-
-import java.awt.*;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -51,6 +48,62 @@ public class Problem_04_SerializeAndReconstructTree {
         return head;
     }
 
+    //------------------------------------------------------------------------------------------------------------------
+    public static String serialByLevel(Node head){
+        if(head == null){
+            return "#!";
+        }
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(head);
+        String res = head.value+"!";
+        while (!queue.isEmpty()){
+            head = queue.poll();
+            if(head.left!=null){
+                queue.offer(head.left);
+                res+=head.left.value+"!";
+            } else  {
+                res+= "#!";
+            }
+            if(head.right!=null){
+                queue.offer(head.right);
+                res+=head.right.value+"!";
+            }else  {
+                res+= "#!";
+            }
+        }
+        return res;
+    }
+    public static Node reconByLevelString(String levelStr) {
+        String[] values = levelStr.split("!");
+        int index = 0;
+        Node head = generateNodeByString(values[index++]);
+        Queue<Node> queue = new LinkedList<>();
+        if (head != null) {
+            queue.offer(head);
+        }
+        Node node = null;
+        while (!queue.isEmpty()){
+            node = queue.poll();
+            node.left = generateNodeByString(values[index++]);
+            node.right= generateNodeByString(values[index++]);
+            if (node.left != null) {
+                queue.offer(node.left);
+            }
+            if (node.right != null) {
+                queue.offer(node.right);
+            }
+        }
+        return head;
+    }
+
+
+    public static Node generateNodeByString(String val) {
+        if (val.equals("#")) {
+            return null;
+        }
+        return new Node(Integer.valueOf(val));
+    }
+
 
 
     // for test -- print tree
@@ -93,9 +146,9 @@ public class Problem_04_SerializeAndReconstructTree {
         System.out.print("reconstruct tree by pre-order, ");
         printTree(head);
 
-        //String level = serialByLevel(head);
-       // System.out.println("serialize tree by level: " + level);
-        //head = reconByLevelString(level);
+        String level = serialByLevel(head);
+       System.out.println("serialize tree by level: " + level);
+        head = reconByLevelString(level);
         System.out.print("reconstruct tree by level, ");
         printTree(head);
 
@@ -110,9 +163,9 @@ public class Problem_04_SerializeAndReconstructTree {
         System.out.print("reconstruct tree by pre-order, ");
         printTree(head);
 
-        //level = serialByLevel(head);
-        //System.out.println("serialize tree by level: " + level);
-        //head = reconByLevelString(level);
+        level = serialByLevel(head);
+        System.out.println("serialize tree by level: " + level);
+        head = reconByLevelString(level);
         System.out.print("reconstruct tree by level, ");
         printTree(head);
 
@@ -131,9 +184,9 @@ public class Problem_04_SerializeAndReconstructTree {
         System.out.print("reconstruct tree by pre-order, ");
         printTree(head);
 
-        //level = serialByLevel(head);
-        //System.out.println("serialize tree by level: " + level);
-        //head = reconByLevelString(level);
+        level = serialByLevel(head);
+        System.out.println("serialize tree by level: " + level);
+        head = reconByLevelString(level);
         System.out.print("reconstruct tree by level, ");
         printTree(head);
 
@@ -153,9 +206,9 @@ public class Problem_04_SerializeAndReconstructTree {
         System.out.print("reconstruct tree by pre-order, ");
         printTree(head);
 
-        //level = serialByLevel(head);
-       // System.out.println("serialize tree by level: " + level);
-       // head = reconByLevelString(level);
+        level = serialByLevel(head);
+        System.out.println("serialize tree by level: " + level);
+        head = reconByLevelString(level);
         System.out.print("reconstruct tree by level, ");
         printTree(head);
 
