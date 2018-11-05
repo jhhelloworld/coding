@@ -28,6 +28,7 @@ public class Problem_12_LongestLessSumSubArrayLength {
 		int high = arr.length - 1;
 		int mid = 0;
 		int res = -1;
+		//<=
 		while (low <= high) {
 			mid = (low + high) / 2;
 			if (arr[mid] >= num) {
