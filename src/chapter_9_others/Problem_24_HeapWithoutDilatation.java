@@ -52,7 +52,7 @@ public class Problem_24_HeapWithoutDilatation {
 			}
 			Node<K> node = last;
 			Node<K> parent = node.parent;
-			// find right position to insert new node
+			// BinarySearch right position to insert new node
 			while (parent != null && node != parent.left) {
 				node = parent;
 				parent = node.parent;
@@ -113,7 +113,7 @@ public class Problem_24_HeapWithoutDilatation {
 			return res.value;
 		}
 
-		// find the most left node of subtree which node is head
+		// BinarySearch the most left node of subtree which node is head
 		private Node<K> mostLeft(Node<K> node) {
 			while (node.left != null) {
 				node = node.left;
@@ -121,7 +121,7 @@ public class Problem_24_HeapWithoutDilatation {
 			return node;
 		}
 
-		// find the most right node of subtree which node is head
+		// BinarySearch the most right node of subtree which node is head
 		private Node<K> mostRight(Node<K> node) {
 			while (node.right != null) {
 				node = node.right;

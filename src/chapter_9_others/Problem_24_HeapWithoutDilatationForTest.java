@@ -54,7 +54,7 @@ public class Problem_24_HeapWithoutDilatationForTest {
 			}
 			Node<K> node = last;
 			Node<K> parent = node.parent;
-			// find right position to insert new node
+			// BinarySearch right position to insert new node
 			while (parent != null && node != parent.left) {
 				node = parent;
 				parent = node.parent;
@@ -115,7 +115,7 @@ public class Problem_24_HeapWithoutDilatationForTest {
 			return res.value;
 		}
 
-		// find the most left node of subtree which node is head
+		// BinarySearch the most left node of subtree which node is head
 		private Node<K> mostLeft(Node<K> node) {
 			while (node.left != null) {
 				node = node.left;
@@ -123,7 +123,7 @@ public class Problem_24_HeapWithoutDilatationForTest {
 			return node;
 		}
 
-		// find the most right node of subtree which node is head
+		// BinarySearch the most right node of subtree which node is head
 		private Node<K> mostRight(Node<K> node) {
 			while (node.right != null) {
 				node = node.right;
@@ -332,7 +332,7 @@ public class Problem_24_HeapWithoutDilatationForTest {
 
 	// for test
 	public static void main(String[] args) {
-		// Õâ¸öMyComparatorÊÇÓÃÀ´Éú³É´ó¸ù¶ÑµÄÊµÀý£¬ÓÃ»§µ±È»Ò²¿É¶¨ÒåÐ¡¸ù¶ÑµÄComparatorÀ´Éú³ÉÐ¡¸ù¶ÑµÄÊµÀý
+		// ï¿½ï¿½ï¿½MyComparatorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É´ï¿½ï¿½ï¿½Ñµï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½È»Ò²ï¿½É¶ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½Ñµï¿½Comparatorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½Ñµï¿½Êµï¿½ï¿½
 		MyHeap<Integer> test = new MyHeap<Integer>(new MyComparator());
 		test.add(4);
 		test.add(6);

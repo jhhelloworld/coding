@@ -62,7 +62,7 @@ public class Problem_07_IsPalindromeList {
 		}
 		Node n1 = head;
 		Node n2 = head;
-		while (n2.next != null && n2.next.next != null) { // find mid node
+		while (n2.next != null && n2.next.next != null) { // BinarySearch mid node
 			n1 = n1.next; // n1 -> mid
 			n2 = n2.next.next; // n2 -> end
 		}

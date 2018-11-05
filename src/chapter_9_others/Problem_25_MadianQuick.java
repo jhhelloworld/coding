@@ -63,7 +63,7 @@ public class Problem_25_MadianQuick {
 
 	}
 
-	//Éú³É´ó¸ù¶ÑµÄ±È½ÏÆ÷
+	//ï¿½ï¿½ï¿½É´ï¿½ï¿½ï¿½ÑµÄ±È½ï¿½ï¿½ï¿½
 	public static class MaxHeapComparator implements Comparator<Integer> {
 		@Override
 		public int compare(Integer o1, Integer o2) {
@@ -75,7 +75,7 @@ public class Problem_25_MadianQuick {
 		}
 	}
 
-	//Éú³ÉÐ¡¸ù¶ÑµÄ±È½ÏÆ÷
+	//ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ÑµÄ±È½ï¿½ï¿½ï¿½
 	public static class MinHeapComparator implements Comparator<Integer> {
 		@Override
 		public int compare(Integer o1, Integer o2) {
@@ -135,7 +135,7 @@ public class Problem_25_MadianQuick {
 			}
 			Node<K> node = last;
 			Node<K> parent = node.parent;
-			// find right position to insert new node
+			// BinarySearch right position to insert new node
 			while (parent != null && node != parent.left) {
 				node = parent;
 				parent = node.parent;
@@ -196,7 +196,7 @@ public class Problem_25_MadianQuick {
 			return res.value;
 		}
 
-		// find the most left node of subtree which node is head
+		// BinarySearch the most left node of subtree which node is head
 		private Node<K> mostLeft(Node<K> node) {
 			while (node.left != null) {
 				node = node.left;
@@ -204,7 +204,7 @@ public class Problem_25_MadianQuick {
 			return node;
 		}
 
-		// find the most right node of subtree which node is head
+		// BinarySearch the most right node of subtree which node is head
 		private Node<K> mostRight(Node<K> node) {
 			while (node.right != null) {
 				node = node.right;
