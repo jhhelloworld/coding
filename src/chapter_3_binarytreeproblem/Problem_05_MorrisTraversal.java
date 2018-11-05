@@ -21,6 +21,7 @@ public class Problem_05_MorrisTraversal {
 		while (cur1 != null) {
 			cur2 = cur1.left;
 			if (cur2 != null) {
+				//不用判断cur2 ！=null，因为cur2不可能等于null
 				while (cur2.right != null && cur2.right != cur1) {
 					cur2 = cur2.right;
 				}
@@ -84,6 +85,7 @@ public class Problem_05_MorrisTraversal {
 					continue;
 				} else {
 					cur2.right = null;
+					//cur1.left
 					printEdge(cur1.left);
 				}
 			}
