@@ -11,6 +11,7 @@ public class Problem_19_SubArrayMaxProduct {
 		double res = arr[0];
 		double maxEnd = 0;
 		double minEnd = 0;
+		//仔细体会
 		for (int i = 1; i < arr.length; ++i) {
 			maxEnd = max * arr[i];
 			minEnd = min * arr[i];
