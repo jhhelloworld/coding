@@ -18,8 +18,16 @@ public class Main {
 
      list.add(0,0);
 
-
+//class Solution {
+//    public int lengthOfLongestSubstring(String s) {
+//
+//    }
+//}
      list.stream().forEach(integer -> System.out.println(integer));
+
+
+
+
 
 
 
