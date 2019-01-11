@@ -28,4 +28,13 @@ public class Q_961_NoRepeatedElementInSize2NArray {
         return 0;
 
     }
+
+    public int repeatedNTimes2(int[] A) {
+        int[] count = new int[10000];
+        for (int a : A)
+            // ++
+            if (count[a]++ == 1)
+                return a;
+        return -1;
+    }
 }
