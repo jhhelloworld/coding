@@ -1,4 +1,4 @@
-package chapter_0_basic;
+package chapter_0_basic.search;
 
 /**
  * @author Jianghua
