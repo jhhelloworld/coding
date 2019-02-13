@@ -62,6 +62,26 @@ public class BinarySearch {
 
     }
 
+    /**
+     * 寻找第一个大于目标值的数字,如果没有返回第一个
+     */
+    public char nextGreatestLetter(char[] letters, char target) {
+        int sp = 0, ep = letters.length - 1;
+        while(sp <= ep) {
+            int mid = (sp + ep) / 2;
+            if(sp == ep) {
+                return letters[sp] > target ? letters[sp] : letters[0];
+            }
+            if(letters[mid] <= target) {
+                sp = mid + 1;
+            }
+            else {
+                ep = mid;
+            }
+        }
+        return letters[0];
+    }
+
 
 
 
