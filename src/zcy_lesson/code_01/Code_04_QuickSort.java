@@ -2,6 +2,8 @@ package zcy_lesson.code_01;
 
 import java.util.Arrays;
 
+//todo 稳定性分析
+//TODO 时间、空间复杂度
 public class Code_04_QuickSort {
 
 	public static void quickSort(int[] arr) {
@@ -33,6 +35,7 @@ public class Code_04_QuickSort {
 			}
 		}
 		swap(arr, more, r);
+		//由于上一步的swap,more变为大于指定值的前一个位置
 		return new int[] { less + 1, more };
 	}
 
@@ -40,6 +43,15 @@ public class Code_04_QuickSort {
 		int tmp = arr[i];
 		arr[i] = arr[j];
 		arr[j] = tmp;
+	}
+
+	//注意 i==j的情况
+	public static void swap2(int[] arr, int i, int j) {
+		if(i==j)
+			return;
+		arr[i] = arr[i] ^ arr[j];
+		arr[j] = arr[i] ^ arr[j];
+		arr[i] = arr[i] ^ arr[j];
 	}
 
 	// for test
