@@ -20,6 +20,7 @@ public class Code_06_BucketSort {
 		int i = 0;
 		for (int j = 0; j < bucket.length; j++) {
 			while (bucket[j]-- > 0) {
+				//注意这一步不要写成
 				arr[i++] = j;
 			}
 		}

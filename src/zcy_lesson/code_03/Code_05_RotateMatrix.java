@@ -13,6 +13,7 @@ public class Code_05_RotateMatrix {
 	}
 
 	public static void rotateEdge(int[][] m, int tR, int tC, int dR, int dC) {
+		//注意times取值
 		int times = dC - tC; 
 		int tmp = 0;
 		for (int i = 0; i != times; i++) {

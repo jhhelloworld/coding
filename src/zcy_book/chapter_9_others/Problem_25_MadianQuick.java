@@ -3,6 +3,7 @@ package zcy_book.chapter_9_others;
 import java.util.Arrays;
 import java.util.Comparator;
 
+//todo Êý¾ÝÁ÷ÖÐ»ñÈ¡ÖÐÎ»Êý
 public class Problem_25_MadianQuick {
 
 	public static class MedianHolder {
@@ -63,7 +64,7 @@ public class Problem_25_MadianQuick {
 
 	}
 
-	//ï¿½ï¿½ï¿½É´ï¿½ï¿½ï¿½ÑµÄ±È½ï¿½ï¿½ï¿½
+	//?????????????
 	public static class MaxHeapComparator implements Comparator<Integer> {
 		@Override
 		public int compare(Integer o1, Integer o2) {
@@ -75,7 +76,7 @@ public class Problem_25_MadianQuick {
 		}
 	}
 
-	//ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ÑµÄ±È½ï¿½ï¿½ï¿½
+	//????§³?????????
 	public static class MinHeapComparator implements Comparator<Integer> {
 		@Override
 		public int compare(Integer o1, Integer o2) {

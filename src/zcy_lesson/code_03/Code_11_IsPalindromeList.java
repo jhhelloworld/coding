@@ -69,6 +69,7 @@ public class Code_11_IsPalindromeList {
 		n2 = n1.next; // n2 -> right part first node
 		n1.next = null; // mid.next -> null
 		Node n3 = null;
+
 		while (n2 != null) { // right part convert
 			n3 = n2.next; // n3 -> save next node
 			n2.next = n1; // next of right node convert
@@ -88,6 +89,7 @@ public class Code_11_IsPalindromeList {
 		}
 		n1 = n3.next;
 		n3.next = null;
+		// n1!=null!
 		while (n1 != null) { // recover list
 			n2 = n1.next;
 			n1.next = n3;

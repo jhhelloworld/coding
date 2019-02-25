@@ -8,7 +8,7 @@ public class Code_03_HeapSort {
 		if (arr == null || arr.length < 2) {
 			return;
 		}
-		for (int i = 0; i < arr.length; i++) {
+		for (int i = 1; i < arr.length; i++) {
 			heapInsert(arr, i);
 		}
 		int size = arr.length;
