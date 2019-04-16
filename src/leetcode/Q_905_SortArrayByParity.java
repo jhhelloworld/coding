@@ -1,7 +1,5 @@
 package leetcode;
 
-import a_test.A;
-
 /**
  * jh
  * 2019年01月11日  17：28

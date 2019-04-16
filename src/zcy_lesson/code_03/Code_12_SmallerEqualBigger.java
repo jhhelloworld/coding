@@ -96,6 +96,7 @@ public class Code_12_SmallerEqualBigger {
 			}
 			head = next;
 		}
+		//important   !!!!!!!
 		// small and equal reconnect
 		if (sT != null) {
 			sT.next = eH;
