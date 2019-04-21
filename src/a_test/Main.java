@@ -1,6 +1,8 @@
 package a_test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -8,41 +10,57 @@ import java.util.List;
  * 2019年04月15日  23：56
  */
 public class Main {
-    public static   class ListNode {
-        int val;
-        ListNode next = null;
+    private static ArrayList<String> result = new ArrayList<>();
+    private static StringBuilder sb = new StringBuilder();
 
-        ListNode(int val) {
-            this.val = val;
+    public static ArrayList<String> Permutation(String str) {
+        if(str==null || str.length() ==0){
+            return  result;
         }
-    }
-    public static ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
-        if(listNode == null){
-            return new ArrayList<Integer>();
-        }
-        ArrayList<Integer> result = new ArrayList<Integer>();
-        recursion (result, listNode);
+        char[] arr = str.toCharArray();
+        Arrays.sort(arr);
+        dfs(arr,0);
         return result;
 
+
+
     }
-    public static void recursion (ArrayList<Integer> result,ListNode listNode){
-        if(listNode == null){
-            return;
+    public static void dfs(char[] arr ,int begin){
+        if(sb.length()==arr.length){
+            result.add(sb.toString());
+        }else {
+            for(int i = begin;i<arr.length;i++){
+                sb.append(arr[i]);
+                if(i+1<arr.length && arr[begin] == arr[i]){
+                    continue;
+                }
+                swap(arr,i,begin);
+                dfs(arr,begin+1);
+                swap(arr,i,begin);
+                sb.delete(sb.length()-1,sb.length());
+            }
         }
-        recursion(result,listNode.next);
-        result.add(listNode.val);
+
+
+    }
+
+    public static void swap(char[] arr ,int i,int j){
+        char temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+
     }
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        List<Integer> result = printListFromTailToHead(head);
-        for(int i = 0;i<result.size();i++){
-            System.out.println(result.get(i)+" ");
-        }
+        StringBuilder stringBuilder = new StringBuilder("abc");
+        stringBuilder.delete(stringBuilder.length()-1,stringBuilder.length());
+
+
+        Permutation("abc");
 
     }
+
+
 
 
 }
