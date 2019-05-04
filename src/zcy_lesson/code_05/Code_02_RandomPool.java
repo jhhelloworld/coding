@@ -2,6 +2,13 @@ package zcy_lesson.code_05;
 
 import java.util.HashMap;
 
+/**
+ * 设计一种结构，在该结构中有如下三个功能
+ * insert（key） 做到不重复
+ * delete（key） 删除
+ * getRandom（）  严格等概率随机返回
+ * 要求时间复杂性O(1)
+ */
 public class Code_02_RandomPool {
 
 	public static class Pool<K> {

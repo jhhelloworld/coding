@@ -22,14 +22,23 @@ public class Code_08_CompleteTreeNodeNumber {
 		return bs(head, 1, mostLeftLevel(head, 1));
 	}
 
-	public static int bs(Node node, int l, int h) {
-		if (l == h) {
+	/**
+	 *
+	 * @param node 当前节点
+	 * @param level 当前节点时第几层
+	 * @param h  整棵树的深度  不改变
+	 * @return 以这个节点为头的节点个数
+	 */
+	public static int bs(Node node, int level, int h) {
+		//leaf
+		if (level == h) {
 			return 1;
 		}
-		if (mostLeftLevel(node.right, l + 1) == h) {
-			return (1 << (h - l)) + bs(node.right, l + 1, h);
+		// node 右子树的左边界是否和高度相等
+		if (mostLeftLevel(node.right, level + 1) == h) {
+			return (1 << (h - level)) + bs(node.right, level + 1, h);
 		} else {
-			return (1 << (h - l - 1)) + bs(node.left, l + 1, h);
+			return (1 << (h - level - 1)) + bs(node.left, level + 1, h);
 		}
 	}
 

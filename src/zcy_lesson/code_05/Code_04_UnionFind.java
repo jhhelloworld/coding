@@ -3,7 +3,7 @@ package zcy_lesson.code_05;
 import java.util.HashMap;
 import java.util.List;
 
-public class Code_04_UnionFind {
+public class     Code_04_UnionFind {
 
 	public static class Node {
 		// whatever you like

@@ -1,5 +1,8 @@
 package zcy_lesson.code_05;
 
+/**
+ * 已知一个矩阵中只有0 1 ，每个位置都可以和自己的上下左右四个位置相连，如果有一片1；连在一起，这个部分叫一个岛，求一个矩阵中有多少个岛
+ */
 public class Code_03_Islands {
 
 	public static int countIslands(int[][] m) {
