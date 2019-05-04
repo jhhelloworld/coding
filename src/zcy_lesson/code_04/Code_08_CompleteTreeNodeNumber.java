@@ -1,5 +1,8 @@
 package zcy_lesson.code_04;
 
+/**
+ * 已知一棵树为完全二叉树，求节点个数，
+ */
 public class Code_08_CompleteTreeNodeNumber {
 
 	public static class Node {

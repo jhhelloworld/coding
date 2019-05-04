@@ -15,6 +15,11 @@ public class Code_07_IsBSTAndCBT {
 		}
 	}
 
+	/**
+	 *TODO 是否是搜索二叉树
+	 * @param head
+	 * @return
+	 */
 	public static boolean isBST(Node head) {
 		if (head == null) {
 			return true;
@@ -46,6 +51,11 @@ public class Code_07_IsBSTAndCBT {
 		return res;
 	}
 
+	/**
+	 * 判断是否是完全二叉树
+	 * @param head
+	 * @return
+	 */
 	public static boolean isCBT(Node head) {
 		if (head == null) {
 			return true;
@@ -59,6 +69,8 @@ public class Code_07_IsBSTAndCBT {
 			head = queue.poll();
 			l = head.left;
 			r = head.right;
+			//开启叶子节点阶段，并且有非空左右孩子
+			//或者右孩子不为空做孩子为空 直接返回false
 			if ((leaf && (l != null || r != null)) || (l == null && r != null)) {
 				return false;
 			}
