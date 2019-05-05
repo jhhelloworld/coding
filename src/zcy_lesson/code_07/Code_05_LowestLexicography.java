@@ -3,6 +3,9 @@ package zcy_lesson.code_07;
 import java.util.Arrays;
 import java.util.Comparator;
 
+/**
+ * 贪心： 字符串数字组  字典序最小的组合结果（所有元素必须都用上）
+ */
 public class Code_05_LowestLexicography {
 
 	public static class MyComparator implements Comparator<String> {
@@ -16,7 +19,7 @@ public class Code_05_LowestLexicography {
 		if (strs == null || strs.length == 0) {
 			return "";
 		}
-		// �����µıȽϷ�ʽ����
+		// 自定义比较器
 		Arrays.sort(strs, new MyComparator());
 		String res = "";
 		for (int i = 0; i < strs.length; i++) {

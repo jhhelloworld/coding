@@ -1,10 +1,16 @@
 package zcy_lesson.code_07;
 
+/**
+ * 前缀树
+ */
 public class Code_01_TrieTree {
 
 	public static class TrieNode {
+		//多少个单词经过当前节点
 		public int path;
+		//多少个的单词以该节点结尾
 		public int end;
+		//下一层路，也可以设计成map结构   数组某个位置为null表示路径不存在
 		public TrieNode[] nexts;
 
 		public TrieNode() {
@@ -21,6 +27,10 @@ public class Code_01_TrieTree {
 			root = new TrieNode();
 		}
 
+		/**
+		 * 插入
+		 * @param word
+		 */
 		public void insert(String word) {
 			if (word == null) {
 				return;
@@ -39,13 +49,19 @@ public class Code_01_TrieTree {
 			node.end++;
 		}
 
+		/**
+		 * 删除
+		 * @param word
+		 */
 		public void delete(String word) {
+			//先判断是否存在
 			if (search(word) != 0) {
 				char[] chs = word.toCharArray();
 				TrieNode node = root;
 				int index = 0;
 				for (int i = 0; i < chs.length; i++) {
 					index = chs[i] - 'a';
+					//如果某个path为0，地下节点直接变为空
 					if (--node.nexts[index].path == 0) {
 						node.nexts[index] = null;
 						return;
@@ -56,6 +72,11 @@ public class Code_01_TrieTree {
 			}
 		}
 
+		/**
+		 * 查 Word出现过几次
+		 * @param word
+		 * @return
+		 */
 		public int search(String word) {
 			if (word == null) {
 				return 0;
@@ -73,6 +94,11 @@ public class Code_01_TrieTree {
 			return node.end;
 		}
 
+		/**
+		 * 查前缀数量
+		 * @param pre
+		 * @return
+		 */
 		public int prefixNumber(String pre) {
 			if (pre == null) {
 				return 0;
