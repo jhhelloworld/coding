@@ -6,86 +6,146 @@ package basic.search;
  * 二分查找，以单调不减序列为例
  */
 public class BinarySearch {
-    /**
-     * 找第一次出现的位置
-     */
-    public static int binarySearchFirst(int[] arr, int target) {
-        int left = 0;
-        int right = arr.length-1;
-        int mid;
 
-        //为什么 while 里的条件是 <，而不是 <=。
-        // 一方面是我们想在循环外部判断最终的 left 位置是否是目标值，
-        // 另一方面是如果循环条件允许 left = right，那么最后 mid = left = right，如果该处正好是目标值，那么 right 将始终等于 mid，不会再左移，就会陷入死循环。
-        while (left < right){
-            mid = (left+right)/2;
-            //当中间值小于目标元素的时候，目标元素在序列的右边：left = temp + 1；
-            /**
-             * 其余的情况目标值在序列的左边：right = temp；
-             * 我们要查找的第一个目标元素的位置，一般的情况就是目标元素存在多个情况，由上述的两个判断条件，我们可以知道，如果查找到了目标元素，并且该目标元素不是第一个的时候，
-             * 此时left<right，判断继续进行。我们这里设置的判断条件保证了，当中间值小于目标元素的时候，left一定会向右移动，
-             * 同时如果中间值恰好等于目标元素的时候，right能够不动，最终序列结束的时候，left=right=目标元素的第一次出现的位置！
-             */
-            if(arr[mid]<target){
-                left = mid+1;
-            }else {
+
+    /**
+     * 最接近目标的数
+     */
+    public int findClosest(int[] arr, int target) {
+        if (arr == null || arr.length == 0) {
+            return -1;
+        }
+        int left = 0;
+        int right = arr.length - 1;
+        int mid = 0;
+        while (left + 1 < right) {
+            mid = left + (right - left) / 2;
+            //通过这个判断，如果数组中不包含target，剩余的两个值必然是离target最近的两个数
+            if (arr[mid] == target) {
+                return mid;
+            } else if (arr[mid] < target) {
+                left = mid;
+            } else {
                 right = mid;
             }
         }
-        if(arr[left] == target){
-            return left;
-        }else {
+        return Math.abs(arr[left] - target) < Math.abs(arr[right] - target) ? left : right;
+    }
+
+    /**
+     * 第一次出现的位置
+     */
+    public static int findFirst(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
             return -1;
+        }
+        int left = 0;
+        int right = nums.length - 1;
+        while (left + 1 < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] < target) {
+                left = mid;
+            } else {
+                right = mid;
+            }
+        }
+        if (nums[left] == target) {
+            return left;
+        }
+        if (nums[right] == target) {
+            return right;
+        }
+        return -1;
+    }
+
+    /**
+     * 最后一次出现的位置
+     */
+    public static int findLast(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+        int left = 0;
+        int right = nums.length - 1;
+        int mid = 0;
+        while (left + 1 < right) {
+            mid = left + (right - left) / 2;
+            if (nums[mid] <= target) {
+                left = mid;
+            } else {
+                right = mid;
+            }
+        }
+        if (nums[right] == target) {
+            return right;
+        }
+        if (nums[left] == target) {
+            return left;
+        }
+        return -1;
+    }
+
+    /**
+     * 第一个小于target的数
+     */
+    public int findLargestSmallerOfTarget(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+        int left = 0;
+        int right = nums.length - 1;
+        int mid = 0;
+        while (left + 1 < target) {
+            mid = left + (right - left) / 2;
+            if (nums[mid] < target) {
+                left = mid;
+            } else {
+                right = mid;
+            }
+        }
+        if (nums[left] == target && left != 0) {
+            return left - 1;
+        } else if (nums[left] == target && left == 0) {
+            return -1;
+        } else {
+            return left;
         }
     }
 
     /**
-     * 找最后一次出现的位置
+     * 第一个大于target 的数
      */
-    public static int binarySearchLast(int[] arr, int target) {
-       int left = 0;
-       int right = arr.length;
-       int mid;
-       while (left<right){
-           mid = (left+right)/2;
-           if(arr[mid]>target){
-               right = mid - 1 ;
-           }else {
-               left = mid;
-           }
-       }
-        if(arr[left] == target){
-            return left;
-        }else {
+    public int findSmallesrLargetOfTargest(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
             return -1;
         }
-
-    }
-
-    /**
-     * 寻找第一个大于目标值的数字,如果没有返回第一个
-     */
-    public char nextGreatestLetter(char[] letters, char target) {
-        int sp = 0, ep = letters.length - 1;
-        while(sp <= ep) {
-            int mid = (sp + ep) / 2;
-            if(sp == ep) {
-                return letters[sp] > target ? letters[sp] : letters[0];
-            }
-            if(letters[mid] <= target) {
-                sp = mid + 1;
-            }
-            else {
-                ep = mid;
+        int left = 0;
+        int right = nums.length - 1;
+        int mid = 0;
+        while (left + 1 < target) {
+            mid = left + (right - left) / 2;
+            if (nums[mid] <= target) {
+                left = mid;
+            } else {
+                right = mid;
             }
         }
-        return letters[0];
+        if (nums[right] == target && right != nums.length - 1) {
+            return right + 1;
+        } else if (nums[right] == target && right == nums.length - 1) {
+            return -1;
+        } else {
+            return right;
+        }
     }
 
 
+    public static void main(String[] args) {
+        int[] nums = new int[]{1, 2, 2, 2, 3};
+        System.out.println(nums);
+        System.out.println(findFirst(nums, 2));
+        System.out.println(findLast(nums, 2));
+    }
 
 
-
-
-    //todo 递归
 }
