@@ -24,10 +24,17 @@ public class Code_06_BestArrange {
 
 	}
 
+	/**
+	 *
+	 * @param programs
+	 * @param start  当前时刻
+	 * @return
+	 */
 	public static int bestArrange(Program[] programs, int start) {
 		Arrays.sort(programs, new ProgramComparator());
 		int result = 0;
 		for (int i = 0; i < programs.length; i++) {
+			//开始时间比当前时间晚，不满足条件
 			if (start <= programs[i].start) {
 				result++;
 				start = programs[i].end;

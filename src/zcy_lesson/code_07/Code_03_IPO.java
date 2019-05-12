@@ -47,6 +47,7 @@ public class Code_03_IPO {
 			while (!minCostQ.isEmpty() && minCostQ.peek().c <= W) {
 				maxProfitQ.add(minCostQ.poll());
 			}
+			//初始基金不能继续下面的情况
 			if (maxProfitQ.isEmpty()) {
 				return W;
 			}

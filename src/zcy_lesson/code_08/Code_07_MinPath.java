@@ -1,11 +1,15 @@
 package zcy_lesson.code_08;
 
+/**
+ * 最小路径
+ */
 public class Code_07_MinPath {
 
 	public static int minPath1(int[][] matrix) {
 		return process1(matrix, matrix.length - 1, matrix[0].length - 1);
 	}
 
+	//
 	public static int process1(int[][] matrix, int i, int j) {
 		int res = matrix[i][j];
 		if (i == 0 && j == 0) {
@@ -18,6 +22,23 @@ public class Code_07_MinPath {
 			return res + process1(matrix, i - 1, j);
 		}
 		return res + Math.min(process1(matrix, i, j - 1), process1(matrix, i - 1, j));
+	}
+
+
+	//暴力递归版本   从[i,j] 到矩阵末尾所需要的步数
+	public static int walk(int[][] matrix,int i , int j){
+		if(i == matrix.length-1 && j == matrix[0].length-1){
+			return matrix[i][j];
+		}
+		if(i == matrix.length-1){
+			return matrix[i][j] + walk(matrix,i,j+1);
+		}
+		if(j == matrix[0].length-1){
+			return matrix[i][j]+ walk(matrix,i+1,j);
+		}
+		int right = walk(matrix,i,j+1);
+		int down = walk(matrix,i+1,j);
+		return matrix[i][j] + Math.max(right,down);
 	}
 
 	public static int minPath2(int[][] m) {

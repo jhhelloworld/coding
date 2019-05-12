@@ -1,6 +1,7 @@
 package zcy_lesson.code_08;
 
 public class Code_01_Factorial {
+
 	public static long getFactorial1(int n) {
 		if (n == 1) {
 			return 1L;

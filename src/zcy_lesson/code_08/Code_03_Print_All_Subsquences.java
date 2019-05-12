@@ -28,6 +28,7 @@ public class Code_03_Print_All_Subsquences {
 	}
 	
 	public static void process(char[] chs, int i, List<Character> res) {
+		// 不要写成length-1
 		if(i == chs.length) {
 			printList(res);
 		}
