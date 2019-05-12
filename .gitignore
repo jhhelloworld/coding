@@ -1,6 +1,6 @@
 .classpath
 .project
-ZuochengyunBookCode.iml
+*.iml
 .idea/
 .settings/
 bin/

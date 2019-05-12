@@ -1,67 +1,79 @@
 package a_test;
 
+import zcy_lesson.code_01.Code_09_Comparator;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * jh
  * 2019年04月15日  23：56
+ * [10,1,11,2,12,3,11]
+ * 4
  */
 public class Main {
-    private static ArrayList<String> result = new ArrayList<>();
-    private static StringBuilder sb = new StringBuilder();
-
-    public static ArrayList<String> Permutation(String str) {
-        if(str==null || str.length() ==0){
-            return  result;
-        }
-        char[] arr = str.toCharArray();
-        Arrays.sort(arr);
-        dfs(arr,0);
-        return result;
 
 
-
-    }
-    public static void dfs(char[] arr ,int begin){
-        if(sb.length()==arr.length){
-            result.add(sb.toString());
-        }else {
-            for(int i = begin;i<arr.length;i++){
-                sb.append(arr[i]);
-                if(i+1<arr.length && arr[begin] == arr[i]){
-                    continue;
-                }
-                swap(arr,i,begin);
-                dfs(arr,begin+1);
-                swap(arr,i,begin);
-                sb.delete(sb.length()-1,sb.length());
-            }
-        }
-
-
-    }
-
-    public static void swap(char[] arr ,int i,int j){
-        char temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-
+    public static String toHex(long time) {
+        return Integer.toHexString((int) time);
     }
 
     public static void main(String[] args) {
-        StringBuilder stringBuilder = new StringBuilder("abc");
-        stringBuilder.delete(stringBuilder.length()-1,stringBuilder.length());
+
+        String ss = "Hello";
+
+        String[] aa = ss.split("");
+
+        String[] bb = {"H", "e", "l", "l", "o"};
 
 
-        Permutation("abc");
+        String[] strings = {"Hello", "World"};
+
+        //Arrays.stream接收一个数组返回一个流
+        List<Stream<String>> streamList = Arrays.asList(strings).stream().
+                map(str -> str.split("")).
+                map(str -> Arrays.stream(str)).
+                collect(Collectors.toList());
+
+        //分步写(map)
+
+        Stream<String[]> stream = Arrays.asList(strings).stream().
+                map(str -> str.split(""));
+
+        Stream<Stream<String>> streamStream = stream.map(strings1 -> Arrays.stream(strings1));
+        List<Stream<String>> streamList1 = streamStream.collect(Collectors.toList());
+
+
+        List<String> stringList = Arrays.asList(strings).stream().
+                map(str -> str.split("")).
+                flatMap(str -> Arrays.stream(str))
+                .collect(Collectors.toList());
+
+
+        //分步写(流只能消费一次)(flatMap)
+        Stream<String[]> stream1 = Arrays.asList(strings).stream().
+                map(str -> str.split(""));
+
+        Stream<String> stringStream = stream1.flatMap(strings1 -> Arrays.stream(strings1));
+
+        List<String> stringList1 = stringStream.collect(Collectors.toList());
 
     }
 
-
-
+    public static Date getDateFromString(String strDate) {
+        Date date = null;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            date = sdf.parse(strDate);
+        } catch (Exception e) {
+        }
+        return date;
+    }
 
 }
 
