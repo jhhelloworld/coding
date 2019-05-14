@@ -1,5 +1,8 @@
 package zcy_lesson.code_02;
 
+/**
+ * kmp 算法应用，原始字符串后面加字符，要求新生成的字符串包含两个原始串
+ */
 public class Code_02_KMP_ShortestHaveTwice {
 
 	public static String answer(String str) {

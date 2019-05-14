@@ -32,13 +32,17 @@ public class Code_01_KMP {
 		next[0] = -1;
 		next[1] = 0;
 		int pos = 2;
+		//跳到的位置
 		int cn = 0;
 		while (pos < next.length) {
 			if (ms[pos - 1] == ms[cn]) {
+				//第cn个，共有cn+1个字符，所以++cn
 				next[pos++] = ++cn;
 			} else if (cn > 0) {
+				//cn再往前跳 ！！！
 				cn = next[cn];
 			} else {
+				//跳无可跳
 				next[pos++] = 0;
 			}
 		}

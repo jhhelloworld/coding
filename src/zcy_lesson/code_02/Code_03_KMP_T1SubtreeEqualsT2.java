@@ -1,5 +1,9 @@
 package zcy_lesson.code_02;
 
+/**
+ * 一个二叉树是否是另一个二叉树的子树
+ * 二叉树的序列化和kmp 结合
+ */
 public class Code_03_KMP_T1SubtreeEqualsT2 {
 
 	public static class Node {
