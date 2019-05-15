@@ -26,6 +26,8 @@ public class Code_04_Manacher {
 			//i' 的回文和  i到R的距离哪个小，哪个就是回文区域  （i到R的距离  和 i‘ 的回文半径，哪个短哪个是瓶颈）
 			//pR > i  : i在回文右边界里面，这是起码有一个不用去验证的区域 （Math.min(pArr[2 * index - i], pR - i)）
 			//2 * index - i 是 i'的位置
+			//注意对称点 边界
+			//注意while 循环边界   右边界更新
 			pArr[i] = pR > i ? Math.min(pArr[2 * index - i], pR - i) : 1;
 			//情况2情况3 o(1) 也扩一下，但立刻会失败  情况1和4有可能会成功
 			while (i + pArr[i] < charArr.length && i - pArr[i] > -1) {

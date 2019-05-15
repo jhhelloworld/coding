@@ -34,6 +34,7 @@ public class Code_05_Manacher_ShortestEnd {
 				pR = i + pArr[i];
 				index = i;
 			}
+			//回文右边界到了最后直接break
 			if (pR == charArr.length) {
 				maxContainsEnd = pArr[i];
 				break;
