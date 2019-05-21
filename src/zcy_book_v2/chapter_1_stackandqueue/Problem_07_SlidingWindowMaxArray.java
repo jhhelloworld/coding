@@ -24,6 +24,7 @@ public class Problem_07_SlidingWindowMaxArray {
 			if (qmax.peekFirst() == i - w) {
 				qmax.pollFirst();
 			}
+			//滑到一个窗口的长度开始收集结果
 			if (i >= w - 1) {
 				res[index++] = arr[qmax.peekFirst()];
 			}
