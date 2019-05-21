@@ -2,6 +2,9 @@ package zcy_book.chapter_1_stackandqueue;
 
 import java.util.LinkedList;
 
+/**
+ * 滑动窗口最大值
+ */
 public class Problem_07_SlidingWindowMaxArray {
 
 	public static int[] getMaxWindow(int[] arr, int w) {

@@ -2,6 +2,9 @@ package zcy_book_v2.chapter_1_stackandqueue;
 
 import java.util.LinkedList;
 
+/**
+ * 滑动窗口最大值
+ */
 public class Problem_07_SlidingWindowMaxArray {
 
 	public static int[] getMaxWindow(int[] arr, int w) {
@@ -12,10 +15,12 @@ public class Problem_07_SlidingWindowMaxArray {
 		int[] res = new int[arr.length - w + 1];
 		int index = 0;
 		for (int i = 0; i < arr.length; i++) {
+			//队列不为空 并且尾节点 小于等于当前值 则弹出
 			while (!qmax.isEmpty() && arr[qmax.peekLast()] <= arr[i]) {
 				qmax.pollLast();
 			}
 			qmax.addLast(i);
+			//判断头结点是否过期
 			if (qmax.peekFirst() == i - w) {
 				qmax.pollFirst();
 			}
