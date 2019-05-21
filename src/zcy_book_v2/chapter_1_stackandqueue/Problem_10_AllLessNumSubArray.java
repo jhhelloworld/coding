@@ -2,6 +2,9 @@ package zcy_book_v2.chapter_1_stackandqueue;
 
 import java.util.LinkedList;
 
+/**
+ * 最大值减去最小值小于或等于num的子数组的数量
+ */
 public class Problem_10_AllLessNumSubArray {
 
 	public static int getNum(int[] arr, int num) {
@@ -10,34 +13,39 @@ public class Problem_10_AllLessNumSubArray {
 		}
 		LinkedList<Integer> qmin = new LinkedList<Integer>();
 		LinkedList<Integer> qmax = new LinkedList<Integer>();
-		int i = 0;
-		int j = 0;
+		int left = 0;
+		int right = 0;
 		int res = 0;
-		while (i < arr.length) {
-			while (j < arr.length) {
-				if (qmin.isEmpty() || qmin.peekLast() != j) {
-					while (!qmin.isEmpty() && arr[qmin.peekLast()] >= arr[j]) {
+		while (left < arr.length) {
+			//扩到不能再扩就停
+			while (right < arr.length) {
+				//最小值结构更新
+				if (qmin.isEmpty() || qmin.peekLast() != right) {
+					while (!qmin.isEmpty() && arr[qmin.peekLast()] >= arr[right]) {
 						qmin.pollLast();
 					}
-					qmin.addLast(j);
-					while (!qmax.isEmpty() && arr[qmax.peekLast()] <= arr[j]) {
+					qmin.addLast(right);
+					//最大值结构更新
+					while (!qmax.isEmpty() && arr[qmax.peekLast()] <= arr[right]) {
 						qmax.pollLast();
 					}
-					qmax.addLast(j);
+					qmax.addLast(right);
 				}
+				//停止
 				if (arr[qmax.getFirst()] - arr[qmin.getFirst()] > num) {
 					break;
 				}
-				j++;
+				right++;
 			}
-			res += j - i;
-			if (qmin.peekFirst() == i) {
+			res += right - left;
+			//最小值更新结构是否过期
+			if (qmin.peekFirst() == left) {
 				qmin.pollFirst();
 			}
-			if (qmax.peekFirst() == i) {
+			if (qmax.peekFirst() == left) {
 				qmax.pollFirst();
 			}
-			i++;
+			left++;
 		}
 		return res;
 	}
