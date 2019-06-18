@@ -31,8 +31,13 @@ public class Main {
 
 
     public static void main(String[] args) {
-        int[] nums = new int[]{0,1,2};
-        subsets(nums);
+        List<User> ss = new ArrayList<>();
+        ss.add(new User("1"));
+        ss.add(new User("2"));
+        ss.stream().forEach(s -> {
+            s.setName(s.getName()+"r");
+        });
+        System.out.println("");
 
     }
 
@@ -43,6 +48,22 @@ public class Main {
         }
         else {
             return n*multiply(n-1);
+        }
+    }
+
+    public static class User{
+        public User(String name) {
+            this.name = name;
+        }
+
+        String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
         }
     }
 }

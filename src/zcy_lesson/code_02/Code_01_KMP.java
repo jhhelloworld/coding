@@ -1,5 +1,9 @@
 package zcy_lesson.code_02;
 
+/**
+ *  KMP 算法
+ *  解决问题：一个字符串是否是另一个字符串的子串
+ */
 public class Code_01_KMP {
 
 	public static int getIndexOf(String s, String m) {
