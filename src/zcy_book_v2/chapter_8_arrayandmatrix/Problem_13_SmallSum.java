@@ -1,5 +1,8 @@
 package zcy_book_v2.chapter_8_arrayandmatrix;
 
+/**
+ * 数组小和定义如下：数组中某个元素之前小于等于该元素的和为sum,所有元素sum的总和为这个数组的小和。
+ */
 public class Problem_13_SmallSum {
 
 	public static int getSmallSum(int[] arr) {
