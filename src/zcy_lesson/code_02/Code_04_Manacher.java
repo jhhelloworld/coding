@@ -44,6 +44,7 @@ public class Code_04_Manacher {
 			//记录全局最大值
 			max = Math.max(max, pArr[i]);
 		}
+		//为什么是max-1？  aba  *a*b*a*   对于b， 最长回文半径是4，原字符串最长回文是3
 		return max - 1;
 	}
 
