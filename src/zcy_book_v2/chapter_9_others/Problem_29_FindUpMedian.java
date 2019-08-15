@@ -30,6 +30,8 @@ public class Problem_29_FindUpMedian {
 				return arr1[mid1];
 			}
 		}
+		//return Math.min(arr1[mid1],arr2[mid2]);
+		//设最后循环 [1,2][1',2']  mid1 = 0,mid2 = 0,  1>1'，则start1=0,end1=0,start2=1,end2=1;  需要在两个start或end中取较小值，而不是在mid中取
 		return Math.min(arr1[start1], arr2[start2]);
 	}
 
