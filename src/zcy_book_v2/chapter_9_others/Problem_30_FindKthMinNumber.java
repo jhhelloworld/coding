@@ -18,7 +18,11 @@ public class Problem_30_FindKthMinNumber {
 		if (kth <= s) {
 			return getUpMedian(shorts, 0, kth - 1, longs, 0, kth - 1);
 		}
+		//l = 10,s=5  k=12   可能值为1——4  l可能值为6——9 需要在这个范围取第5大的数
+		//看起来可以取这部分的上中位数
+		// 重点看一下 s的4 和l 的6，因为要在这个范围找第5大的数，是找下中位数，要改为找上中位数需要对4和6进行判断，然后在剩下的数组中找第3大的数，及上中位数
 		if (kth > l) {
+			// s开始节点 kth-l-1  l开始节点：kth-s-1
 			if (shorts[kth - l - 1] >= longs[l - 1]) {
 				return shorts[kth - l - 1];
 			}
@@ -27,6 +31,8 @@ public class Problem_30_FindKthMinNumber {
 			}
 			return getUpMedian(shorts, kth - l, s - 1, longs, kth - s, l - 1);
 		}
+		//l=10,s=5, k = 7  s可能值为0——4 ，l可能值为 1——6  需要在这个范围内取第六大的数,先判断l的1，然后在剩余数组中取第5大的数
+		//l 开始节点： k-s-1  结束节点 k-1
 		if (longs[kth - s - 1] >= shorts[s - 1]) {
 			return longs[kth - s - 1];
 		}
