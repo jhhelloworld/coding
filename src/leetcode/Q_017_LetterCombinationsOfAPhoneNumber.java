@@ -35,35 +35,39 @@ public class Q_017_LetterCombinationsOfAPhoneNumber {
         }
     }
 
-    public List<String> letterCombinations(String digits) {
+    public static List<String> letterCombinations(String digits) {
         List<String> result = new ArrayList<>();
 
         if(digits == null || digits.length()==0){
             return result;
         }
-        return null;
-
-
-
+        process(result,digits,0,new StringBuilder());
+        return result;
 
     }
 
-
-    public static List<String> getSubList(int num){
-        List<String> result = new ArrayList<>();
-       // String target = getMap(num);
-        return null;
-
-    }
-
-    public static List<String> getSubList(String s,StringBuilder sb,int index,List<String> result){
-        if(index == s.length()-1){
+    private static void process(List<String> result,String digits,int index,StringBuilder sb){
+        if(index == digits.length()){
             result.add(sb.toString());
+            return;
         }
-        sb.append(s.charAt(index));
-        return null;
+        char[] chars = getMap(digits.charAt(index)).toCharArray();
+        for(char c:chars){
+            sb.append(c);
+            process(result,digits,index+1,sb);
+            sb.delete(sb.length()-1,sb.length());
+        }
+
 
     }
+
+    public static void main(String[] args) {
+        List<String> result = letterCombinations("23");
+        StringBuilder sb = new StringBuilder("abc");
+        System.out.println(sb.delete(1,2).toString());
+    }
+
+
 
 }
 
