@@ -15,19 +15,19 @@ package leetcode;
  */
 public class Q_062_UniquePaths {
 
-public static int uniquePaths(int m, int n) {
-    int[] result = new int[n];
-    //第一行只有一个可能
-    for(int i = 0;i<n;i++){
-        result[i] = 1;
-    }
-    for(int i = 1;i<m;i++){
-        for(int j = 1;j<n;j++){
-            result[j] += result[j-1];
+    public static int uniquePaths(int m, int n) {
+        int[] result = new int[n];
+        //第一行只有一个可能
+        for(int i = 0;i<n;i++){
+            result[i] = 1;
         }
+        for(int i = 1;i<m;i++){
+            for(int j = 1;j<n;j++){
+                result[j] += result[j-1];
+            }
+        }
+        return result[n-1];
     }
-    return result[n-1];
-}
 
 
 
