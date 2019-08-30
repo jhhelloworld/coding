@@ -1,6 +1,7 @@
 package basic.binarytree;
 
 import com.sun.tools.internal.ws.processor.generator.CustomExceptionGenerator;
+import util.TreeNode;
 import zcy_lesson.code_08.Test;
 
 import java.util.Stack;
@@ -11,16 +12,6 @@ import java.util.Stack;
  * 二叉树练习
  */
 public class Practice {
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
 
     /**
      * 给定一个二叉查找树(什么是二叉查找树)，以及一个节点，求该节点在中序遍历的后继，如果没有则返回null
