@@ -4,94 +4,52 @@ package leetcode;
  * jh
  * 2019年03月06日  14：06
  * 难点：处理0
+ * 一条包含字母 A-Z 的消息通过以下方式进行了编码：
+ *
+ * 'A' -> 1
+ * 'B' -> 2
+ * ...
+ * 'Z' -> 26
+ * 给定一个只包含数字的非空字符串，请计算解码方法的总数。
+ *
+ * 示例 1:
+ *
+ * 输入: "12"
+ * 输出: 2
+ * 解释: 它可以解码为 "AB"（1 2）或者 "L"（12）。
+ * 示例 2:
+ *
+ * 输入: "226"
+ * 输出: 3
+ * 解释: 它可以解码为 "BZ" (2 26), "VF" (22 6), 或者 "BBF" (2 2 6) 。
+ *
+ *
+
  */
 public class Q_091_DecodeWays {
-    public static int numDecodings(String s) {//split
-        int start = 0;
-        int end = 0;
-        int result = 0;
-
-        while (end<s.length()){
-            if(Integer.valueOf(s.substring(end,end+1))==0){
-                return 0;
-            }
-            boolean contain0 = false;
-            while (end<s.length()-1 && Integer.valueOf(s.substring(end,end+2))<=26 ){
-
-                if(Integer.valueOf(s.substring(end,end+2))==10  || Integer.valueOf(s.substring(end,end+2))==20){
-                    contain0 = true;
-                    break;
-                }else {
-                    end++;
-                }
-
-            }
-            if(contain0){
-                result+=step(end<=start?1:end-start);
-                start = start+2;
-                end = end+2;
-
-
-            }else {
-                result+=step(end-start+1);
-                end++;
-                start++;
-            }
-
-
-
-
-
-
-
-
-
+    public int numDecodings(String s) {
+        if(s == null|| s.length() == 0){
+            return 0;
         }
-        return result;
-
-    }
-
-
-    public static int step(int n){
-        if(n==1){
-            return 1;
+        //第一个字符为0，不可能解码
+        if(s.charAt(0)=='0'){
+            return 0;
         }
-        if(n==2){
-            return 2;
-        }
-        return step(n-1)+step(n-2);
-    }
 
-
-    public static void main(String[] args) {
-        numDecodings2("10000");
-
-    }
-
-    public static int numDecodings2(String s) {
-        int[] dp = new int[s.length() + 1];
-        if (s.length() == 0 || s.charAt(0) == '0') return 0;
-        //important
+        int[] dp = new int[s.length()+1];
         dp[0] = 1;
         dp[1] = 1;
-        for (int i = 1; i < s.length(); i++) {
-            char cur = s.charAt(i);
-            char prev = s.charAt(i - 1);
-            if (prev == '1' || prev == '2') {
-                if (cur == '0') {
-                    dp[i + 1] = dp[i - 1];
-                } else if (prev == '1' || (prev == '2' && cur <= '6')) {
-                    dp[i + 1] = dp[i - 1] + dp[i];
-                } else {
-                    dp[i + 1] = dp[i];
-                }
+        for(int i = 1;i<s.length();i++){
+            if(1<=Integer.parseInt(s.substring(i,i+1)) && Integer.parseInt(s.substring(i,i+1))<=9){
+                dp[i+1] += dp[i];
             }
-            //important
-            else if (cur <= '9' && cur >= '1' && (prev == '0' || prev > '2')) {
-                if(cur=='0'&& prev=='0'){
-                    return  dp[s.length()];
-                }
-                dp[i + 1] = dp[i];
+            if(Integer.parseInt(s.substring(i-1,i+1))<=26 && 10<=Integer.parseInt(s.substring(i-1,i+1))){
+                dp[i+1] +=dp[i-1];
+
+            }
+            //如果到i，解码方法为0，没必要处理后续步骤
+            if(dp[i+1] == 0){
+                return 0;
             }
         }
         return dp[s.length()];
