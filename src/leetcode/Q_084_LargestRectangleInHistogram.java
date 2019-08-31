@@ -8,6 +8,14 @@ import java.util.Stack;
  * 2019年08月27日  11：38
  */
 public class Q_084_LargestRectangleInHistogram {
+    /**
+     * 数组中的最大矩形
+     * 单调栈结构
+     * 如果当前值比栈顶元素大，直接入栈
+     * 如果小于等于栈顶元素，则依次出栈，知道比栈顶元素大或者栈为空
+     * 出栈元素的右边界是当前遍历位置，左边界是栈顶元素，栈为空则为-1
+     * 如果最终栈不为空，依次弹出栈的元素，左边界为栈顶元素，有边界为数组右边界
+     */
     public static int largestRectangleArea(int[] heights) {
         if(heights == null || heights.length ==0){
             return 0;
