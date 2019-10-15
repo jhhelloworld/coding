@@ -100,6 +100,7 @@ public class Code_02_LRU {
 		public void set(K key, V value) {
 			if (this.keyNodeMap.containsKey(key)) {
 				Node<V> node = this.keyNodeMap.get(key);
+				//别忘了重新赋值
 				node.value = value;
 				this.nodeList.moveNodeToTail(node);
 			} else {
@@ -107,6 +108,7 @@ public class Code_02_LRU {
 				this.keyNodeMap.put(key, newNode);
 				this.nodeKeyMap.put(newNode, key);
 				this.nodeList.addNode(newNode);
+				//别忘了判断size
 				if (this.keyNodeMap.size() == this.capacity + 1) {
 					this.removeMostUnusedCache();
 				}
