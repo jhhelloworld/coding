@@ -20,7 +20,7 @@ public class Q_148_SortList {
         ListNode mid = getMid(head);
         ListNode head2 = mid.next;
         mid.next = null;
-        //第一次没加head1=  head2=
+        //第一次没加head1=  head2=  第二次也忘了加
         head = sortList(head);
         head2 = sortList(head2);
         return merge(head,head2);
