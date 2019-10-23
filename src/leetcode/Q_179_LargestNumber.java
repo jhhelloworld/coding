@@ -22,12 +22,13 @@ public class Q_179_LargestNumber {
         for(int i = 0;i<nums.length;i++){
             strings[i] = String.valueOf(nums[i]);
         }
+        //一定要会写这个方法
         Arrays.sort(strings, new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
                 String s1 = o1+o2;
                 String s2 = o2+o1;
-                //逆序
+                //逆序!!
                 return s2.compareTo(s1);
             }
         });
