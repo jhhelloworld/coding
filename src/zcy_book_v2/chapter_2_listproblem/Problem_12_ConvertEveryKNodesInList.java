@@ -34,6 +34,7 @@ public class Problem_12_ConvertEveryKNodesInList {
 		return newHead;
 	}
 
+	//返回这一组翻转后的最后一个节点，作为下一组的pre
 	public static Node resign1(Stack<Node> stack, Node left, Node right) {
 		Node cur = stack.pop();
 		if (left != null) {
@@ -54,9 +55,13 @@ public class Problem_12_ConvertEveryKNodesInList {
 			return head;
 		}
 		Node cur = head;
+		//开始翻转的位置
 		Node start = null;
+		//当前翻转组的前一个节点
 		Node pre = null;
+		//当前翻转组的下一个节点
 		Node next = null;
+		//注意count的初始值
 		int count = 1;
 		while (cur != null) {
 			next = cur.next;
@@ -64,10 +69,13 @@ public class Problem_12_ConvertEveryKNodesInList {
 				start = pre == null ? head : pre.next;
 				head = pre == null ? cur : head;
 				resign2(pre, start, cur, next);
+				//给pre赋值，翻转之前的第一个成为下一组的前一个
 				pre = start;
 				count = 0;
 			}
+			//count++放在循环的头部还是尾部
 			count++;
+			//注意 cur=next 而不是 cur.next
 			cur = next;
 		}
 		return head;
