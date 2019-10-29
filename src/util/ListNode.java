@@ -1,6 +1,5 @@
 package util;
 
-import javax.print.attribute.standard.NumberUp;
 
 /**
  * jh
