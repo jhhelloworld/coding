@@ -45,6 +45,10 @@ public class Q_212_WordSearch2 {
         if (c == '#' || root.map[c - 'a'] == null) {
             return;
         }
+        //判断时机,为什么先root= map[c - 'a'];
+        //从下面建立前缀树可看出，假设Word="ab"，第一个trieNode.map[0] 不为空，指向第二个trieNode.map[1]不为空
+        //还有第三个trieNode,map都为空，但是string为"ab"。
+        // 上一题的实现前缀树,path 表示经过当前字符的数量，end也是最后一层有new一个node，赋值end
         root = root.map[c - 'a'];
         if (root.word != null) {
             result.add(root.word);
