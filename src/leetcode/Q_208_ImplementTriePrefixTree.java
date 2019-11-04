@@ -10,6 +10,7 @@ import sun.plugin.net.protocol.jar.CachedJarURLConnection;
  *
  * 总体设计思路
  *  每个节点包含 当前层出现的字母（数组） ，经过当前层的数量，以当前层结尾的数量
+ *  path 表示经过当前字符的数量，end最后一层有new一个node，赋值end，注意和字符不在一层
  */
 public class Q_208_ImplementTriePrefixTree {
 
