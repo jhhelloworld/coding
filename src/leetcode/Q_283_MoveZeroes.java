@@ -17,8 +17,6 @@ public class Q_283_MoveZeroes {
         for(int i = 0;i<len;i++){
             if(nums[i]!=0){
                 nums[left++]=nums[i];
-            }else {
-                continue;
             }
         }
         for(int i = left;i<len;i++){
