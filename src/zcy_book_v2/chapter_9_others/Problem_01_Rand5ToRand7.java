@@ -50,7 +50,7 @@ public class Problem_01_Rand5ToRand7 {
 		return getNumFromMSysNum(randNum, m) + 1;
 	}
 
-	// ��valueת��m���Ƶ���
+	// 把value转成m进制数
 	public static int[] getMSysNum(int value, int m) {
 		int[] res = new int[32];
 		int index = res.length - 1;
@@ -61,7 +61,12 @@ public class Problem_01_Rand5ToRand7 {
 		return res;
 	}
 
-	// �ȸ����������һ��0~nMsys��Χ�ϵ�����ֻ������m���Ʊ��ġ�
+	// 核心方法 等概率随机产生一个0~nMsys 范围的数，只不过是用m进制数表达的
+	//方法思想： 转换为m进制后，从最左一个非零位开始随机，每一位产生一个0-m-1的数字
+	//如果第一位大于nMSys 对应的值，重新随机，如果等于，记录 lastEqual 进行下一位随机
+	//为什么要有 lastEqual ：lastEqual 的值 只有小于  nMSys 对应值时才会取反，并且后面一直不变，只要曾经比nMSys 对应值 小
+	//就能保证最终生成的随机数比 n-1小，后面就可以随机取 0——m-1
+	//关键是保证生成的随机数 <= n-1
 	public static int[] getRanMSysNumLessN(int[] nMSys, int m) {
 		int[] res = new int[nMSys.length];
 		int start = 0;
@@ -86,7 +91,7 @@ public class Problem_01_Rand5ToRand7 {
 		return res;
 	}
 
-	// ��m���Ƶ���ת��10����
+	// 把m进制数转成10进制数
 	public static int getNumFromMSysNum(int[] mSysNum, int m) {
 		int res = 0;
 		for (int i = 0; i != mSysNum.length; i++) {
@@ -101,7 +106,16 @@ public class Problem_01_Rand5ToRand7 {
 		}
 	}
 
+
 	public static void main(String[] args) {
+		rand1ToN(7,5);
+	}
+
+
+
+
+
+	public static void main1(String[] args) {
 		int testTimes = 1000000;
 		int[] countArr1 = new int[8];
 		for (int i = 0; i != testTimes; i++) {
