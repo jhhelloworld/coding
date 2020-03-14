@@ -1,6 +1,5 @@
 package leetcode;
 
-import com.sun.tools.javac.util.ListBuffer;
 import sun.misc.OSEnvironment;
 import util.ListNode;
 
