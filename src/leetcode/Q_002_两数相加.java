@@ -9,7 +9,7 @@ import util.ListNode;
  * 如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。
  * 您可以假设除了数字 0 之外，这两个数都不会以 0 开头。
  */
-public class Q_002_AddTwoNumbers {
+public class Q_002_两数相加 {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode dummyHead = new ListNode(0);
         ListNode cur = dummyHead;
