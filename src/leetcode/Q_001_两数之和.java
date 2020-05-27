@@ -10,7 +10,7 @@ import java.util.Map;
  * 你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
  *
  */
-public class Q_001_TwoSum {
+public class Q_001_两数之和 {
 
     public int[] twoSum(int[] nums, int target) {
         Map<Integer,Integer> map = new HashMap<Integer,Integer>();
