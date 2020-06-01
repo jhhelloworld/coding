@@ -1,16 +1,18 @@
 package leetcode;
 
+import java.util.Arrays;
+
 /**
  * jh
  * 2019年01月04日  14：10
+ * 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
  */
-public class Q_003_LengthOfLongestSubstring {
+public class Q_003_无重复字符的最长子串 {
 
 
     public static void main(String[] args) {
         System.out.println(lengthOfLongestSubstring("abababc"));
     }
-
 
     /**
      * 思路：0,1,....i-1,i,...
@@ -25,9 +27,7 @@ public class Q_003_LengthOfLongestSubstring {
         char[] chars = s.toCharArray();
         //map[chars[i]]  记录字符上一次出现的位置,初始值为-1
         int[] map = new int[255];
-        for(int i = 0;i<map.length;i++){
-            map[i] = -1;
-        }
+        Arrays.fill(map,-1);
         //pre：当前遍历到i,包含i-1的最长无重复的前一个位置
         int pre = -1;
         //记录最大结果
