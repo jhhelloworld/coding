@@ -8,7 +8,7 @@ import jdk.nashorn.internal.objects.NativeNumber;
  * 在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
  * 你可以假设 k 总是有效的，且 1 ≤ k ≤ 数组的长度。
  */
-public class Q_215_KthLargestElementInAnArray {
+public class Q_215_数组中的第K个最大元素 {
 
     /**
      * 思路：快排思想
@@ -38,23 +38,21 @@ public class Q_215_KthLargestElementInAnArray {
     }
 
 
-    public int[] partition(int[] nums, int l, int r) {
-        int less = l - 1;
-        int more = r;
-        while (l < more) {
+    //注意这里要把较大的放到左边，较小的放到右边
+    private int[] partition(int[] nums, int l, int r) {
+        int more = l - 1, less = r;
+        while (l < less) {
             if (nums[l] < nums[r]) {
-                swap(nums, --more, l);
-            } else if (nums[l] == nums[r]) {
-                l++;
+                swap(nums, l, --less);
+            } else if (nums[l] > nums[r]) {
+                swap(nums, l++, ++more);
             } else {
-                swap(nums, l++, ++less);
+                l++;
             }
         }
-        swap(nums, more, r);
-        return new int[]{less + 1, more};
-
+        swap(nums, l, r);
+        return new int[]{more + 1, l};
     }
-
 
     public void swap(int[] arr, int i, int j) {
         int temp = arr[i];
@@ -88,6 +86,7 @@ public class Q_215_KthLargestElementInAnArray {
         }
 
 
+
         //left  j  pivot i  right
         if (j - left + 1 >= k) {
             return quickSelect2(nums, left, j, k);
@@ -96,6 +95,7 @@ public class Q_215_KthLargestElementInAnArray {
         if (i - left + 1 <= k) {
             return quickSelect2(nums, i, right, k - (i - left));
         }
+        //为什么+1
         return nums[j + 1];
     }
 
