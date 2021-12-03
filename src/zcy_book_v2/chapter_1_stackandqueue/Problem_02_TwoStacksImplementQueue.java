@@ -2,6 +2,7 @@ package zcy_book_v2.chapter_1_stackandqueue;
 
 import java.util.Stack;
 
+//两个栈实现一个队列
 public class Problem_02_TwoStacksImplementQueue {
 
 	public static class TwoStacksQueue {
