@@ -1,7 +1,5 @@
 package leetcode;
 
-import a_test.Main;
-import basic.binarytree.Practice;
 import util.TreeNode;
 
 /**

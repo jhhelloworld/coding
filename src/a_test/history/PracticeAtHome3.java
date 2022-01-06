@@ -1,4 +1,4 @@
-package a_test;
+package a_test.history;
 
 import java.util.ArrayList;
 import java.util.HashMap;

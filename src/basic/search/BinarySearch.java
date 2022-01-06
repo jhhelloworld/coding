@@ -145,7 +145,12 @@ public class BinarySearch {
         System.out.println(nums);
         System.out.println(findFirst(nums, 2));
         System.out.println(findLast(nums, 2));
+
+
+
+
     }
+
 
 
 }
