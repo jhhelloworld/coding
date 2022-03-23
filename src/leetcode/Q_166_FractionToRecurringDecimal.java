@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
  * jh
  * 2019年09月05日  00：06
  *
- * 给定两个整数，分别表示分数的分子 numerator 和分母 denominator，以字符串形式返回小数。
+ * 给定两个整数，分别表示分数的分子numerator 和分母 denominator，以字符串形式返回小数。
  *
  * 如果小数部分为循环小数，则将循环的部分括在括号内。
  *

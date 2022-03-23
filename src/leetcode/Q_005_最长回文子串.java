@@ -26,7 +26,7 @@ public class Q_005_最长回文子串 {
             //如果i在最右边界范围内，可加速
             //为什么是 pR-i 而不是 pR-i+1? 由于pR 还没有校验，所以是>i,相对应的可能的半径是 i到 pR-1-i+1 、
             //如果改为 pR-i+1 会有什么后果？babadada 输出  "abada"
-            pArr[i] = pR > i ? Math.min(pArr[2 * index - i], pR - i ) : 1;
+            pArr[i] = pR > i ? Math.min(pArr[2 * index - i], pR - i) : 1;
             //尝试向两个扩张
             while (i + pArr[i] < chars.length && i - pArr[i] >= 0) {
                 if (chars[i + pArr[i]] == chars[i - pArr[i]]) {
@@ -46,8 +46,6 @@ public class Q_005_最长回文子串 {
                 maxIndex = i;
             }
         }
-
-
         //生成最长回文串
         StringBuilder sb = new StringBuilder();
         int endIndex = maxIndex + maxLen - 2;

@@ -27,6 +27,7 @@ public class Q_003_无重复字符的最长子串 {
         char[] chars = s.toCharArray();
         //map[chars[i]]  记录字符上一次出现的位置,初始值为-1
         int[] map = new int[255];
+        // 为什么是-1：如果这个字符之前没出现过，减上一个位置（-1） 效果等于最大长度+1
         Arrays.fill(map,-1);
         //pre：当前遍历到i,包含i-1的最长无重复的前一个位置
         int pre = -1;
