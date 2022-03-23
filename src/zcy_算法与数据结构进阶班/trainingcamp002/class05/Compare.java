@@ -2,9 +2,6 @@ package zcy_算法与数据结构进阶班.trainingcamp002.class05;
 
 import java.util.TreeMap;
 
-import class05.Code01_AVLTreeMap.AVLTreeMap;
-import class05.Code02_SizeBalancedTreeMap.SizeBalancedTreeMap;
-import class05.Code03_SkipListMap.SkipListMap;
 
 // 本文件为avl、sbt、skiplist三种结构的测试文件
 public class Compare {
@@ -12,9 +9,9 @@ public class Compare {
 	public static void functionTest() {
 		System.out.println("功能测试开始");
 		TreeMap<Integer, Integer> treeMap = new TreeMap<>();
-		AVLTreeMap<Integer, Integer> avl = new AVLTreeMap<>();
-		SizeBalancedTreeMap<Integer, Integer> sbt = new SizeBalancedTreeMap<>();
-		SkipListMap<Integer, Integer> skip = new SkipListMap<>();
+		Code01_AVLTreeMap.AVLTreeMap<Integer, Integer> avl = new Code01_AVLTreeMap.AVLTreeMap<>();
+		Code02_SizeBalancedTreeMap.SizeBalancedTreeMap<Integer, Integer> sbt = new Code02_SizeBalancedTreeMap.SizeBalancedTreeMap<>();
+		Code03_SkipListMap.SkipListMap<Integer, Integer> skip = new Code03_SkipListMap.SkipListMap<>();
 		int maxK = 500;
 		int maxV = 50000;
 		int testTime = 1000000;
@@ -212,16 +209,16 @@ public class Compare {
 	public static void performanceTest() {
 		System.out.println("性能测试开始");
 		TreeMap<Integer, Integer> treeMap;
-		AVLTreeMap<Integer, Integer> avl;
-		SizeBalancedTreeMap<Integer, Integer> sbt;
-		SkipListMap<Integer, Integer> skip;
+		Code01_AVLTreeMap.AVLTreeMap<Integer, Integer> avl;
+		Code02_SizeBalancedTreeMap.SizeBalancedTreeMap<Integer, Integer> sbt;
+		Code03_SkipListMap.SkipListMap<Integer, Integer> skip;
 		long start;
 		long end;
 		int max = 1000000;
 		treeMap = new TreeMap<>();
-		avl = new AVLTreeMap<>();
-		sbt = new SizeBalancedTreeMap<>();
-		skip = new SkipListMap<>();
+		avl = new Code01_AVLTreeMap.AVLTreeMap<>();
+		sbt = new Code02_SizeBalancedTreeMap.SizeBalancedTreeMap<>();
+		skip = new Code03_SkipListMap.SkipListMap<>();
 		System.out.println("顺序递增加入测试，数据规模 : " + max);
 		start = System.currentTimeMillis();
 		for (int i = 0; i < max; i++) {
