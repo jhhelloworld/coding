@@ -2,6 +2,19 @@ package zcy_算法与数据结构进阶班.trainingcamp001.class01;
 
 import java.util.LinkedList;
 
+/**
+ * 给定一个整型数组arr，和一个整数num
+ * 某个arr中的子数组sub，如果想达标，必须满足：sub中最大值 – sub中最小值 <= num，
+ * 返回arr中达标子数组的数量
+ */
+
+/**
+ * 思路：
+ * 从数组的最左侧开始，依次向右遍历。
+ * 每次遍历都记录 以arr[i] 开头的，符合要求的字数粗数量。
+ * 实现方法是滑动窗口最左侧是 i，逐步向右扩，直到不符合要求为止
+ * 维护两个双端队列，记录窗口的最大值和最小值。
+ */
 public class Code02_AllLessNumSubArray {
 
 	public static int getNum(int[] arr, int num) {
@@ -16,9 +29,7 @@ public class Code02_AllLessNumSubArray {
 		// [0,1) -> [0~0]
 		int res = 0;
 		while (L < arr.length) { // L是开头位置，尝试每一个开头
-
 			// 如果此时窗口的开头是L,下面的while工作:R向右扩到违规为止
-
 			while (R < arr.length) { // R是最后一个达标位置的再下一个
 				while (!qmin.isEmpty() && arr[qmin.peekLast()] >= arr[R]) {
 					qmin.pollLast();
@@ -36,9 +47,9 @@ public class Code02_AllLessNumSubArray {
 				R++;
 			}
 
-			// R是最后一个达标位置的再下一个，第一个违规的位置
+			// R是最后一个达标位置的再下一个，第一个违规的位置!!!! 所以不用+1
 			res += R - L;
-
+			//容易忘掉判断
 			if (qmin.peekFirst() == L) {
 				qmin.pollFirst();
 			}
