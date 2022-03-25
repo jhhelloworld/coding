@@ -4,6 +4,38 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Stack;
 
+/**
+ * 单调栈实现（无重复数+有重复数）
+ * 目标：找到数组中各个元素的左边第一个比他小的数，和右边第一个比他小的数。
+ */
+
+/**
+ * 思路：
+ *
+ * 数组中没有重复的元素：
+ * 维护一个栈，存储数组下标，从栈底到栈顶对应的数组元素是递增的。
+ * 遍历数组，如果当前数值 > 栈顶对应的数值,直接入栈。
+ * 如果当前数值 < 栈顶对应的数值, 一次从栈顶弹出，直到栈顶值比当前值小为止。
+ * 每弹出一个数，就生成弹出这个数的 "左边第一个比他小的数，和右边第一个比他小的数"
+ * 规则是：
+ * 1. 使他弹出的这个数，就是右边第一个比他小的数(这两个数中间不可能有比他小的数，如过有，在遍历到这个数的时候就弹出了)
+ * 2. 栈中下一层的数就是左边第一个比他小的数。（当初就是因为比下一层的数大，才入的栈），如果已经是栈底，就说明左边没有比他小的数了。
+ * 然后把当前值对应的数组下标压入栈。
+ * 遍历完数组后，依次把栈中剩余的元素弹出。
+ * 1. 对于剩下的元素来说，右边没有比自己小的数
+ * 2. 左边比自己小的数，和上面逻辑相同。
+ *
+ * 数组中有重复的元素：
+ * 栈不能存储单个位置，存储结构变为：Stack<List<Integer>>， 存储一组数值相同的元素对应的下标。
+ * 入栈规则：
+ * 如果当前数值比栈顶元素List中任意一个大，则直接入栈（下一层对应的数值相同，直接和第一个比就好），加入到List尾部。
+ * 如果当前数值比栈顶元素小，则开始弹出。
+ * List中右边第一个比他小的值，就是当前遍历的值，这一点和没有重复元素的场景相同。
+ * List中左边第一个比他小的元素，是下一层中，List末尾的元素（因为他是最后加入的）
+ * 当前元素入队，加入到List尾部。
+ * 遍历完数组后，弹出规则和上面类似。
+ *
+ */
 public class Code03_MonotonousStack {
 
 	public static int[][] getNearLessNoRepeat(int[] arr) {
@@ -12,12 +44,14 @@ public class Code03_MonotonousStack {
 		for (int i = 0; i < arr.length; i++) {
 			while (!stack.isEmpty() && arr[stack.peek()] > arr[i]) {
 				int popIndex = stack.pop();
+				//第一次写代码写成了 stack.pop()
 				int leftLessIndex = stack.isEmpty() ? -1 : stack.peek();
 				res[popIndex][0] = leftLessIndex;
 				res[popIndex][1] = i;
 			}
 			stack.push(i);
 		}
+		//剩余元素容易忘记
 		while (!stack.isEmpty()) {
 			int popIndex = stack.pop();
 			int leftLessIndex = stack.isEmpty() ? -1 : stack.peek();
@@ -56,7 +90,7 @@ public class Code03_MonotonousStack {
 			}
 			// 相等的、比你小的
 			if (!stack.isEmpty() && arr[stack.peek().get(0)] == arr[i]) {
-				stack.peek().add(Integer.valueOf(i));
+				stack.peek().add(i);
 			} else {
 				ArrayList<Integer> list = new ArrayList<>();
 				list.add(i);
