@@ -1,5 +1,24 @@
 package zcy_算法与数据结构进阶班.trainingcamp001.class02;
 
+/**
+ 【题目】
+ 给定一个数N，想象只有 0 和1  两个字符，组成的所有长度为 N 的字符串
+ 如果某个字符串，任何0字符串的左边都有1紧挨着，认为这个字符串达标
+ 返回多少达标的字符串
+
+ N=1 ： 1
+ N=2 ： 10,11
+ N=3 :  101, 110 ,111
+
+ 用1*2的瓷砖，把N*2的区域填满，返回铺瓷砖的方法数
+ 思路：
+ 第一块砖竖着摆，剩下 N-1 的位置
+ 第一块砖横着摆，剩下N-2 的位置
+ F(N) = F(N-1) + F(N-2)
+
+ 总结：任何一种“严格没有条件转移的表达式” 都可以转化为类似的解法
+
+ */
 public class Code02_ZeroLeftOneStringNumber {
 
 	public static int getNum1(int n) {
@@ -9,6 +28,17 @@ public class Code02_ZeroLeftOneStringNumber {
 		return process(1, n);
 	}
 
+	/**
+	 * f(i)含义：
+	 * 如果长度是 i, i 的每个 位置可以为 0 ，也可以为1
+	 *  i 假想的左侧（不包括i）一定有一个 1
+	 *  在这种前提下，i 的长度有几个达标的值
+	 *  假设N = 8，则需要调函数 f(7) 因为最左边一定是1
+	 *  然后看f(i) 的递归逻辑
+	 *  如果 i 第一位是0 ， 下一位只能是1，下一个递归函数就是 f(i-2)
+	 *  如果 i 第一位是1 ，下一个递归函数就是 f(i-1)
+	 *  所以 f(i) = f(i-1)+f(i-2)
+	 */
 	public static int process(int i, int n) {
 		if (i == n - 1) {
 			return 2;
