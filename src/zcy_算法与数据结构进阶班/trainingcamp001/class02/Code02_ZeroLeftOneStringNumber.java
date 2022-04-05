@@ -28,16 +28,9 @@ public class Code02_ZeroLeftOneStringNumber {
 		return process(1, n);
 	}
 
+
 	/**
-	 * f(i)含义：
-	 * 如果长度是 i, i 的每个 位置可以为 0 ，也可以为1
-	 *  i 假想的左侧（不包括i）一定有一个 1
-	 *  在这种前提下，i 的长度有几个达标的值
-	 *  假设N = 8，则需要调函数 f(7) 因为最左边一定是1
-	 *  然后看f(i) 的递归逻辑
-	 *  如果 i 第一位是0 ， 下一位只能是1，下一个递归函数就是 f(i-2)
-	 *  如果 i 第一位是1 ，下一个递归函数就是 f(i-1)
-	 *  所以 f(i) = f(i-1)+f(i-2)
+	 * 递归思路
 	 */
 	public static int process(int i, int n) {
 		if (i == n - 1) {
@@ -67,6 +60,18 @@ public class Code02_ZeroLeftOneStringNumber {
 		return cur;
 	}
 
+
+	/**
+	 * f(i)含义：注意和位置无关，有i个长度
+	 * 如果长度是 i, i的每个 位置可以为 0 ，也可以为1
+	 *  i 假想的左侧（不包括i）一定有一个 1
+	 *  在这种前提下，i 的长度有几个达标的值
+	 *  假设N = 8，则需要调函数 f(7) 因为最左边一定是1
+	 *  然后看f(i) 的递归逻辑
+	 *  如果 i 第一位是0 ， 下一位只能是1，下一个递归函数就是 f(i-2)
+	 *  如果 i 第一位是1 ，下一个递归函数就是 f(i-1)
+	 *  所以 f(i) = f(i-1)+f(i-2)
+	 */
 	public static int getNum3(int n) {
 		if (n < 1) {
 			return 0;
