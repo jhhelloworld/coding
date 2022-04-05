@@ -1,5 +1,11 @@
 package zcy_算法与数据结构进阶班.trainingcamp001.class03;
 
+/**
+ 蓄水池算法实现
+ 假设有一个源源吐出不同球的机器，
+ 只有装下10个球的袋子，每一个吐出的球，要么放入袋子，要么永远扔掉
+ 如何做到机器吐出每一个球之后，所有吐出的球都等概率被放进袋子里
+ */
 public class Code02_ReservoirSampling {
 
 	public static class RandomBox {
@@ -28,6 +34,7 @@ public class Code02_ReservoirSampling {
 			}
 		}
 
+		//返回结果
 		public int[] choices() {
 			int[] ans = new int[N];
 			for (int i = 0; i < N; i++) {
