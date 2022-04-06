@@ -3,6 +3,19 @@ package 算法和数据结构体系学习班.class14;
 import java.util.Arrays;
 import java.util.Comparator;
 
+/**
+ 一些项目要占用一个会议室宣讲，会议室不能同时容纳两个项目的宣讲。
+ 给你一个项目开始和结束的时间，你来安排宣讲的日程，要求会议室进行的宣讲的场次最多。
+ 返回最多的宣讲场次
+
+ 【暴力递归思路】
+ 遍历数组， 每个元素都选择是否安排会议。
+
+ 【贪心思路】
+ 把数组元素按照结束时间进行排序。
+ 遍历排序后的数组，如果会议开始时间小于endLine ,安排会议，并把endLine 设置为当前会议的结束时间。
+
+ */
 public class Code03_BestArrange {
 
 	public static class Program {
@@ -26,7 +39,6 @@ public class Code03_BestArrange {
 	// 还剩下的会议都放在programs里
 	// done之前已经安排了多少会议的数量
 	// timeLine目前来到的时间点是什么
-	
 	// 目前来到timeLine的时间点，已经安排了done多的会议，剩下的会议programs可以自由安排
 	// 返回能安排的最多会议数量
 	public static int process(Program[] programs, int done, int timeLine) {
@@ -37,8 +49,10 @@ public class Code03_BestArrange {
 		int max = done;
 		// 当前安排的会议是什么会，每一个都枚举
 		for (int i = 0; i < programs.length; i++) {
+			//只判断当前值能不能安排就好，不用担心后面某种情况使得当前会议又能安排了，end是不断后移的
 			if (programs[i].start >= timeLine) {
 				Program[] next = copyButExcept(programs, i);
+				// 不能写Math.max(done, max 值会变，遍历每个值判断 是否安排会议，每个决策都可能导致max变化
 				max = Math.max(max, process(next, done + 1, programs[i].end));
 			}
 		}
@@ -72,12 +86,10 @@ public class Code03_BestArrange {
 	}
 
 	public static class ProgramComparator implements Comparator<Program> {
-
 		@Override
 		public int compare(Program o1, Program o2) {
 			return o1.end - o2.end;
 		}
-
 	}
 
 	// for test
